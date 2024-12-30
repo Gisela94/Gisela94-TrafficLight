@@ -11,27 +11,26 @@ const Home = () => {
   
   const changeColor = () => {
     const colors = ["red", "yellow", "green"];
-    const currentIndex = colors.indexOf(color); //la función indexOf busca el ígit push al en el array colors
-    const nextColor = colors[(currentIndex + 1) % colors.length]; //currentIndex + 1: Aumenta el índice actual en 1 para pasar al siguiente color. // % = asegura que si llegas al final del array, vuelvas al principio.
+    const currentIndex = colors.indexOf(color); //la función indexOf busca el índice actual del color en el array colors.
+    const nextColor = colors[(currentIndex + 1) % colors.length]; //currentIndex + 1 lo que hace es aumentar el indice actual en 1 para pasar al sigueinte color de la lista. El signo % hace que cuando llegue al final del arreglo (currentIndex + 1 = colors.length), el array vuelva a comenzar. Así se repite ciclicamente.
     setColor(nextColor); 
   };
 
-  // Función para agregar o quitar una luz morada, alternadamente
+ 
   const togglePurpleLight = () => {
-    // Verifica si ya existe la luz morada
     const purpleExists = lights.some((light) => light.color === "purple");
 
     if (purpleExists) {
-      setLights(lights.filter((light) => light.color !== "purple")); //Si existe la luz morada la elimina
+      setLights(lights.filter((light) => light.color !== "purple")); 
     } else {
-      const newLight = { id: "purple", color: "purple" }; // Si no existe, agrega una nueva luz morada
-      setLights([...lights, newLight]); //se utiliza para actualizar el estado lights
+      const newLight = { id: "purple", color: "purple" }; 
+      setLights([...lights, newLight]);
     }
   };
 
 
   const handleClick = (selectedColor) => {
-    setColor(selectedColor); // Actualiza el color que debe brillar
+    setColor(selectedColor); 
   };
 
   return (
